@@ -11,7 +11,7 @@ jobs:
       - name: Set env
         run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
       - name: Publish Image to Docker Registry
-        uses: elgohr/Publish-Docker-Github-Action@2.19
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: ${{ secrets.DOCKERHUB_REPO }}
           username: ${{ secrets.DOCKERHUB_USER }}
@@ -19,7 +19,7 @@ jobs:
           cache: true
           tags: "latest,${{ env.RELEASE_VERSION }}"
       - name: Publish Image to Artipie Registry
-        uses: elgohr/Publish-Docker-Github-Action@2.19
+        uses: elgohr/Publish-Docker-Github-Action@v5
         with:
           name: central.artipie.com/artipie/docker
           username: ${{ secrets.ARTIPIE_USERNAME }}
